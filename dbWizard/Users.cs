@@ -19,7 +19,7 @@ namespace dbWizard
 
         //sets id of user
         int userId;
-        
+
         public Users()
         {
             InitializeComponent();
@@ -39,12 +39,12 @@ namespace dbWizard
             //fills dgv_Users
             var select = @"USE [dbWizard] 
 
-    SELECT dbUserID, dbUsername, CASE WHEN dbPassword<> '' THEN '***' ELSE 'Error' END AS 'dbPassword',GRPS.dbGroupAlias,USR.dtDateCreated,
+    SELECT dbUserID AS 'User ID', dbUsername AS 'Username', CASE WHEN dbPassword<> '' THEN '***' ELSE 'Error' END AS 'Password',GRPS.dbGroupAlias AS 'Security Group',USR.dtDateCreated AS 'Date Created',
 		CASE WHEN USR.intActive = 1 THEN 'Online' ELSE 'Offline' END AS 'Activity'
 
         FROM[dbo].[dbUsers] USR INNER JOIN[dbo].[dbUserGroups] GRPS ON USR.intSecurity = GRPS.dbGroupID";
 
-            var c = new SqlConnection(connstr); 
+            var c = new SqlConnection(connstr);
             var dataAdapter = new SqlDataAdapter(select, c);
 
             var commandBuilder = new SqlCommandBuilder(dataAdapter);
@@ -53,8 +53,21 @@ namespace dbWizard
             dgv_Users.ReadOnly = true;
             dgv_Users.DataSource = ds.Tables[0];
 
+            //sets user id for the selected row
             userId = Convert.ToInt32(dgv_Users.Rows[0].Cells[0].Value.ToString());
 
+            //sets whether or not online with image
+            if (dgv_Users.Rows[0].Cells[5].Value.ToString() == "Online")
+            {
+                pb_Online.Visible = true;
+            }
+            else
+            {
+                pb_Offline.Visible = true;
+            }
+
+
+            //sets profile info
             SqlConnection sqlConnection1 = new SqlConnection(connstr);
             SqlCommand cmd = new SqlCommand();
             Object returnValue;
@@ -133,17 +146,30 @@ namespace dbWizard
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void dgv_Users_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            //hides avaliability status
+            pb_Offline.Visible = false;
+            pb_Online.Visible = false;
+
             //tells user changes have been saved
             lbl_Saved.Visible = false;
             pb_Saved.Visible = false;
 
             //sets user profile
             userId = Convert.ToInt32(dgv_Users.SelectedRows[0].Cells[0].Value.ToString());
+
+            if (dgv_Users.SelectedRows[0].Cells[5].Value.ToString() == "Online")
+            {
+                pb_Online.Visible = true;
+            }
+            else
+            {
+                pb_Offline.Visible = true;
+            }
 
             SqlConnection sqlConnection1 = new SqlConnection(connstr);
             SqlCommand cmd = new SqlCommand();
@@ -217,7 +243,7 @@ namespace dbWizard
             SqlCommand cmd = new SqlCommand();
             Object returnValue;
 
-            cmd.CommandText = "USE [dbWizard] UPDATE dbUserProfile SET dbForename = '" +txtForename.Text + "',dbSurname='"+txtSurname.Text+"',dtDateOfBirth='"+txtDOB.Text+"',dbEmailAddress='"+txtEmail.Text+"',dbCountry='"+txtCountry.Text+"' WHERE dbUserID = " + userId;
+            cmd.CommandText = "USE [dbWizard] UPDATE dbUserProfile SET dbForename = '" + txtForename.Text + "',dbSurname='" + txtSurname.Text + "',dtDateOfBirth='" + txtDOB.Text + "',dbEmailAddress='" + txtEmail.Text + "',dbCountry='" + txtCountry.Text + "' WHERE dbUserID = " + userId;
             cmd.CommandType = CommandType.Text;
             cmd.Connection = sqlConnection1;
 
@@ -228,6 +254,110 @@ namespace dbWizard
             //tells user changes have been saved
             lbl_Saved.Visible = true;
             pb_Saved.Visible = true;
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmb_UserOptions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //cmb change for delete users
+
+            if (cmb_UserOptions.Text == "Delete selected users")
+            {
+                //asks user if they want to delete users
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete the selected user? This will remove all data associated.", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    int selectedUser = Convert.ToInt32(dgv_Users.SelectedRows[0].Cells[0].Value.ToString());
+
+                    //if admin, cant delete
+                    if (selectedUser == 1)
+                    {
+                        MessageBox.Show("You cannot delete the Administrator account.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    }
+                    else
+                    {
+                        //deletes user data
+                        SqlConnection sqlConnection1 = new SqlConnection(connstr);
+                        SqlCommand cmd = new SqlCommand();
+                        Object returnValue;
+
+                        cmd.CommandText = "USE [dbWizard] DELETE FROM dbUserProfile WHERE dbUserID = " + selectedUser + "; USE [dbWizard] DELETE FROM dbUsers WHERE dbUserID = " + selectedUser;
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Connection = sqlConnection1;
+
+                        sqlConnection1.Open();
+                        returnValue = cmd.ExecuteScalar();
+                        sqlConnection1.Close();
+
+
+                        var select = @"USE [dbWizard] 
+
+    SELECT dbUserID, dbUsername, CASE WHEN dbPassword<> '' THEN '***' ELSE 'Error' END AS 'dbPassword',GRPS.dbGroupAlias,USR.dtDateCreated,
+		CASE WHEN USR.intActive = 1 THEN 'Online' ELSE 'Offline' END AS 'Activity'
+
+        FROM[dbo].[dbUsers] USR INNER JOIN[dbo].[dbUserGroups] GRPS ON USR.intSecurity = GRPS.dbGroupID";
+
+                        //resets table
+                        var c = new SqlConnection(connstr);
+                        var dataAdapter = new SqlDataAdapter(select, c);
+
+                        var commandBuilder = new SqlCommandBuilder(dataAdapter);
+                        var ds = new DataSet();
+                        dataAdapter.Fill(ds);
+                        dgv_Users.ReadOnly = true;
+                        dgv_Users.DataSource = ds.Tables[0];
+                    }
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+
+                }
+            }
+            //Reset passwords (via email, defaults to "letmein")
+            if (cmb_UserOptions.Text == "Reset passwords (via email, defaults to 'letmein')")
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to reset the password for the selected user?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    int selectedUser = Convert.ToInt32(dgv_Users.SelectedRows[0].Cells[0].Value.ToString());
+
+                    //resets password
+                    SqlConnection sqlConnection1 = new SqlConnection(connstr);
+                    SqlCommand cmd = new SqlCommand();
+                    Object returnValue;
+
+                    cmd.CommandText = "USE [dbWizard] UPDATE dbUsers SET dbPassword = 'letmein' WHERE dbUserID = " + selectedUser;
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = sqlConnection1;
+
+                    sqlConnection1.Open();
+                    returnValue = cmd.ExecuteScalar();
+                    sqlConnection1.Close();
+
+                    //lets user know password has been reset
+                    MessageBox.Show("Password has been reset for: " + dgv_Users.SelectedRows[0].Cells[1].Value.ToString(), "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void addNewUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //closes window
+            this.Hide();
+        }
+
+        private void addNewUserToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

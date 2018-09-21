@@ -31,6 +31,15 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.GroupBoxTools = new System.Windows.Forms.GroupBox();
+            this.btn_Export = new System.Windows.Forms.Button();
+            this.btn_Backup = new System.Windows.Forms.Button();
+            this.btn_DeleteData = new System.Windows.Forms.Button();
+            this.btn_OtherUsers = new System.Windows.Forms.Button();
+            this.btn_QueryEditor = new System.Windows.Forms.Button();
+            this.btn_Import = new System.Windows.Forms.Button();
+            this.btn_BulkUpdate = new System.Windows.Forms.Button();
+            this.btn_PartialRestore = new System.Windows.Forms.Button();
+            this.btn_Fullrestore = new System.Windows.Forms.Button();
             this.btn_OpenTable = new System.Windows.Forms.Button();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,6 +59,7 @@
             this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createDbWizardDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,16 +68,6 @@
             this.tmrRefresh = new System.Windows.Forms.Timer(this.components);
             this.lbl_User = new System.Windows.Forms.Label();
             this.ttOpenTable = new System.Windows.Forms.ToolTip(this.components);
-            this.btn_Fullrestore = new System.Windows.Forms.Button();
-            this.btn_PartialRestore = new System.Windows.Forms.Button();
-            this.btn_BulkUpdate = new System.Windows.Forms.Button();
-            this.btn_Import = new System.Windows.Forms.Button();
-            this.btn_QueryEditor = new System.Windows.Forms.Button();
-            this.btn_OtherUsers = new System.Windows.Forms.Button();
-            this.btn_DeleteData = new System.Windows.Forms.Button();
-            this.btn_Backup = new System.Windows.Forms.Button();
-            this.btn_Export = new System.Windows.Forms.Button();
-            this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GroupBoxTools.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -90,6 +90,88 @@
             this.GroupBoxTools.Size = new System.Drawing.Size(43, 599);
             this.GroupBoxTools.TabIndex = 2;
             this.GroupBoxTools.TabStop = false;
+            // 
+            // btn_Export
+            // 
+            this.btn_Export.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Export.BackgroundImage")));
+            this.btn_Export.Location = new System.Drawing.Point(8, 291);
+            this.btn_Export.Name = "btn_Export";
+            this.btn_Export.Size = new System.Drawing.Size(29, 28);
+            this.btn_Export.TabIndex = 6;
+            this.btn_Export.UseVisualStyleBackColor = true;
+            // 
+            // btn_Backup
+            // 
+            this.btn_Backup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Backup.BackgroundImage")));
+            this.btn_Backup.Location = new System.Drawing.Point(8, 257);
+            this.btn_Backup.Name = "btn_Backup";
+            this.btn_Backup.Size = new System.Drawing.Size(29, 28);
+            this.btn_Backup.TabIndex = 6;
+            this.btn_Backup.UseVisualStyleBackColor = true;
+            // 
+            // btn_DeleteData
+            // 
+            this.btn_DeleteData.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_DeleteData.BackgroundImage")));
+            this.btn_DeleteData.Location = new System.Drawing.Point(8, 223);
+            this.btn_DeleteData.Name = "btn_DeleteData";
+            this.btn_DeleteData.Size = new System.Drawing.Size(29, 28);
+            this.btn_DeleteData.TabIndex = 6;
+            this.btn_DeleteData.UseVisualStyleBackColor = true;
+            // 
+            // btn_OtherUsers
+            // 
+            this.btn_OtherUsers.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_OtherUsers.BackgroundImage")));
+            this.btn_OtherUsers.Location = new System.Drawing.Point(8, 563);
+            this.btn_OtherUsers.Name = "btn_OtherUsers";
+            this.btn_OtherUsers.Size = new System.Drawing.Size(29, 28);
+            this.btn_OtherUsers.TabIndex = 6;
+            this.btn_OtherUsers.UseVisualStyleBackColor = true;
+            // 
+            // btn_QueryEditor
+            // 
+            this.btn_QueryEditor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_QueryEditor.BackgroundImage")));
+            this.btn_QueryEditor.Location = new System.Drawing.Point(8, 189);
+            this.btn_QueryEditor.Name = "btn_QueryEditor";
+            this.btn_QueryEditor.Size = new System.Drawing.Size(29, 28);
+            this.btn_QueryEditor.TabIndex = 6;
+            this.btn_QueryEditor.UseVisualStyleBackColor = true;
+            // 
+            // btn_Import
+            // 
+            this.btn_Import.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Import.BackgroundImage")));
+            this.btn_Import.Location = new System.Drawing.Point(8, 155);
+            this.btn_Import.Name = "btn_Import";
+            this.btn_Import.Size = new System.Drawing.Size(29, 28);
+            this.btn_Import.TabIndex = 6;
+            this.btn_Import.UseVisualStyleBackColor = true;
+            // 
+            // btn_BulkUpdate
+            // 
+            this.btn_BulkUpdate.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_BulkUpdate.BackgroundImage")));
+            this.btn_BulkUpdate.Location = new System.Drawing.Point(8, 121);
+            this.btn_BulkUpdate.Name = "btn_BulkUpdate";
+            this.btn_BulkUpdate.Size = new System.Drawing.Size(29, 28);
+            this.btn_BulkUpdate.TabIndex = 6;
+            this.btn_BulkUpdate.UseVisualStyleBackColor = true;
+            // 
+            // btn_PartialRestore
+            // 
+            this.btn_PartialRestore.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_PartialRestore.BackgroundImage")));
+            this.btn_PartialRestore.Location = new System.Drawing.Point(8, 87);
+            this.btn_PartialRestore.Name = "btn_PartialRestore";
+            this.btn_PartialRestore.Size = new System.Drawing.Size(29, 28);
+            this.btn_PartialRestore.TabIndex = 6;
+            this.btn_PartialRestore.UseVisualStyleBackColor = true;
+            // 
+            // btn_Fullrestore
+            // 
+            this.btn_Fullrestore.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Fullrestore.BackgroundImage")));
+            this.btn_Fullrestore.Location = new System.Drawing.Point(8, 53);
+            this.btn_Fullrestore.Name = "btn_Fullrestore";
+            this.btn_Fullrestore.Size = new System.Drawing.Size(29, 28);
+            this.btn_Fullrestore.TabIndex = 6;
+            this.btn_Fullrestore.UseVisualStyleBackColor = true;
+            this.btn_Fullrestore.Click += new System.EventHandler(this.btn_Fullrestore_Click);
             // 
             // btn_OpenTable
             // 
@@ -133,14 +215,14 @@
             // 
             this.importToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("importToolStripMenuItem.Image")));
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.importToolStripMenuItem.Text = "Import";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -148,14 +230,14 @@
             // 
             this.exportToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exportToolStripMenuItem.Image")));
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.exportToolStripMenuItem.Text = "Export";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exitToolStripMenuItem.Image")));
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -163,7 +245,7 @@
             // 
             this.logInToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("logInToolStripMenuItem.Image")));
             this.logInToolStripMenuItem.Name = "logInToolStripMenuItem";
-            this.logInToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logInToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.logInToolStripMenuItem.Text = "Log in";
             this.logInToolStripMenuItem.Click += new System.EventHandler(this.logInToolStripMenuItem_Click);
             // 
@@ -261,6 +343,14 @@
             this.createDbWizardDatabaseToolStripMenuItem.Text = "Create dbWizard database";
             this.createDbWizardDatabaseToolStripMenuItem.Click += new System.EventHandler(this.createDbWizardDatabaseToolStripMenuItem_Click);
             // 
+            // usersToolStripMenuItem
+            // 
+            this.usersToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("usersToolStripMenuItem.Image")));
+            this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.usersToolStripMenuItem.Text = "Manage users (admin only)";
+            this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
+            // 
             // viewsToolStripMenuItem
             // 
             this.viewsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -277,7 +367,7 @@
             this.closeToolBarToolStripMenuItem});
             this.toolsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("toolsToolStripMenuItem.Image")));
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
             // openToolBarToolStripMenuItem
@@ -321,96 +411,6 @@
             // 
             this.ttOpenTable.IsBalloon = true;
             this.ttOpenTable.Popup += new System.Windows.Forms.PopupEventHandler(this.ttOpenTable_Popup);
-            // 
-            // btn_Fullrestore
-            // 
-            this.btn_Fullrestore.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Fullrestore.BackgroundImage")));
-            this.btn_Fullrestore.Location = new System.Drawing.Point(8, 53);
-            this.btn_Fullrestore.Name = "btn_Fullrestore";
-            this.btn_Fullrestore.Size = new System.Drawing.Size(29, 28);
-            this.btn_Fullrestore.TabIndex = 6;
-            this.btn_Fullrestore.UseVisualStyleBackColor = true;
-            this.btn_Fullrestore.Click += new System.EventHandler(this.btn_Fullrestore_Click);
-            // 
-            // btn_PartialRestore
-            // 
-            this.btn_PartialRestore.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_PartialRestore.BackgroundImage")));
-            this.btn_PartialRestore.Location = new System.Drawing.Point(8, 87);
-            this.btn_PartialRestore.Name = "btn_PartialRestore";
-            this.btn_PartialRestore.Size = new System.Drawing.Size(29, 28);
-            this.btn_PartialRestore.TabIndex = 6;
-            this.btn_PartialRestore.UseVisualStyleBackColor = true;
-            // 
-            // btn_BulkUpdate
-            // 
-            this.btn_BulkUpdate.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_BulkUpdate.BackgroundImage")));
-            this.btn_BulkUpdate.Location = new System.Drawing.Point(8, 121);
-            this.btn_BulkUpdate.Name = "btn_BulkUpdate";
-            this.btn_BulkUpdate.Size = new System.Drawing.Size(29, 28);
-            this.btn_BulkUpdate.TabIndex = 6;
-            this.btn_BulkUpdate.UseVisualStyleBackColor = true;
-            // 
-            // btn_Import
-            // 
-            this.btn_Import.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Import.BackgroundImage")));
-            this.btn_Import.Location = new System.Drawing.Point(8, 155);
-            this.btn_Import.Name = "btn_Import";
-            this.btn_Import.Size = new System.Drawing.Size(29, 28);
-            this.btn_Import.TabIndex = 6;
-            this.btn_Import.UseVisualStyleBackColor = true;
-            // 
-            // btn_QueryEditor
-            // 
-            this.btn_QueryEditor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_QueryEditor.BackgroundImage")));
-            this.btn_QueryEditor.Location = new System.Drawing.Point(8, 189);
-            this.btn_QueryEditor.Name = "btn_QueryEditor";
-            this.btn_QueryEditor.Size = new System.Drawing.Size(29, 28);
-            this.btn_QueryEditor.TabIndex = 6;
-            this.btn_QueryEditor.UseVisualStyleBackColor = true;
-            // 
-            // btn_OtherUsers
-            // 
-            this.btn_OtherUsers.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_OtherUsers.BackgroundImage")));
-            this.btn_OtherUsers.Location = new System.Drawing.Point(8, 563);
-            this.btn_OtherUsers.Name = "btn_OtherUsers";
-            this.btn_OtherUsers.Size = new System.Drawing.Size(29, 28);
-            this.btn_OtherUsers.TabIndex = 6;
-            this.btn_OtherUsers.UseVisualStyleBackColor = true;
-            // 
-            // btn_DeleteData
-            // 
-            this.btn_DeleteData.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_DeleteData.BackgroundImage")));
-            this.btn_DeleteData.Location = new System.Drawing.Point(8, 223);
-            this.btn_DeleteData.Name = "btn_DeleteData";
-            this.btn_DeleteData.Size = new System.Drawing.Size(29, 28);
-            this.btn_DeleteData.TabIndex = 6;
-            this.btn_DeleteData.UseVisualStyleBackColor = true;
-            // 
-            // btn_Backup
-            // 
-            this.btn_Backup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Backup.BackgroundImage")));
-            this.btn_Backup.Location = new System.Drawing.Point(8, 257);
-            this.btn_Backup.Name = "btn_Backup";
-            this.btn_Backup.Size = new System.Drawing.Size(29, 28);
-            this.btn_Backup.TabIndex = 6;
-            this.btn_Backup.UseVisualStyleBackColor = true;
-            // 
-            // btn_Export
-            // 
-            this.btn_Export.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Export.BackgroundImage")));
-            this.btn_Export.Location = new System.Drawing.Point(8, 291);
-            this.btn_Export.Name = "btn_Export";
-            this.btn_Export.Size = new System.Drawing.Size(29, 28);
-            this.btn_Export.TabIndex = 6;
-            this.btn_Export.UseVisualStyleBackColor = true;
-            // 
-            // usersToolStripMenuItem
-            // 
-            this.usersToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("usersToolStripMenuItem.Image")));
-            this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
-            this.usersToolStripMenuItem.Text = "Manage users (admin only)";
-            this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
             // 
             // Home
             // 
