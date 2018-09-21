@@ -34,13 +34,24 @@ namespace dbWizard.SQL_Scripts
 	                    [dbGroupRights] [varchar](30) NOT NULL,
 	                    [dtDateCreated] [datetime] NOT NULL
                     ) 
-
+                    
+                    CREATE TABLE [dbo].[dbUserProfile](
+	                    [dbUserId] [int] NULL,
+	                    [dbForename] [varchar](max) NULL,
+	                    [dbSurname] [varchar](max) NULL,
+	                    [dtDateOfBirth] [varchar](max) NULL,
+	                    [dbEmailAddress] [varchar](max) NULL,
+	                    [dbCountry] [varchar](max) NULL
+                    ) 
 
                     INSERT INTO [dbUserGroups] (dbGroupAlias,dbGroupRights,dtDateCreated)
                     SELECT 'Admins','all',GETDATE();
 
                     INSERT INTO [dbUsers] (dbUsername,dbPassword,intSecurity,dtDateCreated,intActive)
                     SELECT 'Administrator','letmein',1,GETDATE(),0;
+
+                    INSERT INTO [dbUserProfile] (dbUserId,dbForename,dbSurname,dtDateOfBirth,dbEmailAddress,dbCountry)
+                    SELECT 1,NULL,NULL,NULL,NULL,NULL;
 
         ";
     }

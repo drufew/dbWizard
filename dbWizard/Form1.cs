@@ -408,7 +408,10 @@ namespace dbWizard
 
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Users users = new Users();
+            users.connstr = connstr;
+            users.Show();
+            
         }
     }
 }

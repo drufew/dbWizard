@@ -24,3 +24,4 @@ C:\Users\daniel.gillard\source\repos\Git\dbWizard\dbWizard\obj\Debug\dbWizard.cs
 C:\Users\daniel.gillard\source\repos\Git\dbWizard\dbWizard\obj\Debug\dbWizard.csproj.CoreCompileInputs.cache
 C:\Users\daniel.gillard\source\repos\Git\dbWizard\dbWizard\obj\Debug\dbWizard.exe
 C:\Users\daniel.gillard\source\repos\Git\dbWizard\dbWizard\obj\Debug\dbWizard.pdb
+C:\Users\daniel.gillard\source\repos\Git\dbWizard\dbWizard\obj\Debug\dbWizard.Users.resources
