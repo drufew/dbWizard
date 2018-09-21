@@ -39,6 +39,21 @@ namespace dbWizard
                 Directory.CreateDirectory(root);
             }
 
+            //hides users tab 
+            settingsToolStripMenuItem.DropDownItems[3].Visible = false;
+
+            //sets tooltips
+            ttOpenTable.SetToolTip(btn_OpenTable, "Open database table");
+            ttOpenTable.SetToolTip(btn_Fullrestore, "Full restore wizard");
+            ttOpenTable.SetToolTip(btn_PartialRestore, "Patial restore wizard");
+            ttOpenTable.SetToolTip(btn_BulkUpdate, "Bulk update");
+            ttOpenTable.SetToolTip(btn_Import, "Import (into existing tables or new)");
+            ttOpenTable.SetToolTip(btn_QueryEditor, "Manually write SQL queries");
+            ttOpenTable.SetToolTip(btn_OtherUsers, "See who is online & chat");
+            ttOpenTable.SetToolTip(btn_DeleteData, "Delete data wizard");
+            ttOpenTable.SetToolTip(btn_Backup, "Backup data (individual, or entire database");
+            ttOpenTable.SetToolTip(btn_Export, "Create new export or view saved exports");
+
             //Sets skin to light mode.
             var skinManager = MaterialSkin.MaterialSkinManager.Instance;
             skinManager.AddFormToManage(this);
@@ -98,6 +113,13 @@ namespace dbWizard
                     sqlConnection1.Close();
 
                     lbl_User.Text = "Logged in as: " + returnValue.ToString();
+
+
+                    //alows admin to control security groups etc.
+                    if (returnValue.ToString() == "Administrator")
+                    {
+                        settingsToolStripMenuItem.DropDownItems[3].Visible = true;
+                    }
 
                 }
             }          
@@ -372,6 +394,21 @@ namespace dbWizard
             {
                 MessageBox.Show("Connection to database not established", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void ttOpenTable_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void btn_Fullrestore_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
