@@ -357,6 +357,19 @@ namespace dbWizard
 
         private void addNewUserToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+        }
+
+        private void userToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //closes users and opens new user form
+            NewUser nwUser = new NewUser();
+            nwUser.connstr = connstr;
+            nwUser.Show();
+            this.Hide();
+        }
+
+        private void securityGroupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
         }
     }

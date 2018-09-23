@@ -361,6 +361,15 @@ namespace dbWizard
                         DialogResult dialogResult = MessageBox.Show("You're already logged in as: " + lbl_User.Text + ", would you like to logout?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (dialogResult == DialogResult.Yes)
                         {
+                            //sets user to offline
+                            cmd.CommandText = "USE [dbWizard] UPDATE dbUsers SET intActive=0 WHERE dbUserID=" + userId;
+                            cmd.CommandType = CommandType.Text;
+                            cmd.Connection = sqlConnection1;
+
+                            sqlConnection1.Open();
+                            cmd.ExecuteScalar();
+                            sqlConnection1.Close();
+
                             //logs user out
                             userId = 0000000000;
                             lbl_User.Text = "Not currently logged in.";
@@ -371,6 +380,8 @@ namespace dbWizard
                                 //removes saved credentials
                                 File.Delete(@"C:\\dbWizard\\credentials.txt");
                             }
+                          
+
                         }
                         else if (dialogResult == DialogResult.No)
                         {
