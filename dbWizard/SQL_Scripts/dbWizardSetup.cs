@@ -44,6 +44,16 @@ namespace dbWizard.SQL_Scripts
 	                    [dbCountry] [varchar](max) NULL
                     ) 
 
+                    CREATE TABLE [dbo].[dbMessageHistory](
+	                [dbChatId] [int] IDENTITY(1,1) NOT NULL,
+	                [dbUserSentName] [varchar](max) NULL,
+	                [dbUserSentBy] [int] NULL,
+	                [dbUserReceived] [int] NULL,
+	                [dbMessageContent] [varchar](max) NULL,
+	                [dtDateSent] [datetime] NULL
+                )
+
+
                     INSERT INTO [dbUserGroups] (dbGroupAlias,dbGroupRights,dtDateCreated)
                     SELECT 'Admins','All',GETDATE();
 

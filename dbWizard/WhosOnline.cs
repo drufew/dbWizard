@@ -113,6 +113,8 @@ namespace dbWizard
                 cmd.ExecuteScalar();
                 sqlConnection1.Close();
 
+                txtSendMessage.Clear();
+                txtSendMessage.Focus();
                 
             }
         }
