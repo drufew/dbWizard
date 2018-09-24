@@ -137,5 +137,26 @@ namespace dbWizard
                 MessageBox.Show("Credentials incorrect", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == (char)Keys.Enter)
+            {
+                btnConfirm.PerformClick();
+            }
+            }
+
+        private void txtPassword_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyValue==(char)Keys.Tab)
+            {
+                txtPassword.Focus();
+            }
+        }
     }
 }

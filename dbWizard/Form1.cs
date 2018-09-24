@@ -29,7 +29,7 @@ namespace dbWizard
             InitializeComponent();
         }
 
-  
+     
 
         void Home_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -121,6 +121,8 @@ namespace dbWizard
 
                     userId = Convert.ToInt32(returnValue.ToString());
 
+                    fileToolStripMenuItem.DropDownItems[4].Text = "Log out";
+
                     //sets username
                     cmd.CommandText = "USE [dbWizard] SELECT dbUsername FROM dbUsers WHERE dbUserID = " + userId;
                     cmd.CommandType = CommandType.Text;
@@ -150,7 +152,11 @@ namespace dbWizard
                 }
 
                 
-            }          
+            }
+            else
+            {
+                settingsToolStripMenuItem.DropDownItems[2].Visible = false;
+            }
 
             //hides toolbar from users if not logged in
             if (userId == 0000000000)
@@ -422,6 +428,8 @@ namespace dbWizard
 
         private void logInToolStripMenuItem_Click(object sender, EventArgs e)
         {
+           
+
             if (connstr != "")
             {
                 SqlConnection sqlConnection1 = new SqlConnection(connstr);
@@ -464,8 +472,8 @@ namespace dbWizard
                                 //removes saved credentials
                                 File.Delete(@"C:\\dbWizard\\credentials.txt");
                             }
-                          
 
+    
                         }
                         else if (dialogResult == DialogResult.No)
                         {

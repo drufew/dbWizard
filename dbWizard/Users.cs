@@ -117,7 +117,7 @@ namespace dbWizard
             returnValue = cmd.ExecuteScalar();
             sqlConnection1.Close();
 
-            txtDOB.Text = returnValue.ToString();
+            dtBirthDate.Text = returnValue.ToString();
 
             cmd.CommandText = "USE [dbWizard] SELECT dbEmailAddress FROM dbUserProfile WHERE dbUserID = " + userId;
             cmd.CommandType = CommandType.Text;
@@ -220,7 +220,7 @@ namespace dbWizard
             returnValue = cmd.ExecuteScalar();
             sqlConnection1.Close();
 
-            txtDOB.Text = returnValue.ToString();
+            dtBirthDate.Text = returnValue.ToString();
 
             cmd.CommandText = "USE [dbWizard] SELECT dbEmailAddress FROM dbUserProfile WHERE dbUserID = " + userId;
             cmd.CommandType = CommandType.Text;
@@ -288,7 +288,7 @@ namespace dbWizard
             SqlCommand cmd = new SqlCommand();
             Object returnValue;
 
-            cmd.CommandText = "USE [dbWizard] UPDATE dbUserProfile SET dbForename = '" + txtForename.Text + "',dbSurname='" + txtSurname.Text + "',dtDateOfBirth='" + txtDOB.Text + "',dbEmailAddress='" + txtEmail.Text + "',dbCountry='" + txtCountry.Text + "' WHERE dbUserID = " + userId;
+            cmd.CommandText = "USE [dbWizard] UPDATE dbUserProfile SET dbForename = '" + txtForename.Text + "',dbSurname='" + txtSurname.Text + "',dtDateOfBirth='" + dtBirthDate.Text + "',dbEmailAddress='" + txtEmail.Text + "',dbCountry='" + txtCountry.Text + "' WHERE dbUserID = " + userId;
             cmd.CommandType = CommandType.Text;
             cmd.Connection = sqlConnection1;
 
@@ -561,6 +561,31 @@ namespace dbWizard
                 cmb_UserOptions.Items.Add("Delete selected users");
                 cmb_UserOptions.Items.Add("Reset passwords(via email, defaults to 'letmein')");
             }
+        }
+
+        private void txtForename_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == (char)Keys.Tab)
+            {
+                txtSurname.Focus();
+            }
+        }
+
+        private void txtSurname_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == (char)Keys.Tab)
+            {
+                txtEmail.Focus();
+            }
+        }
+
+        private void txtCountry_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCountry_KeyDown(object sender, KeyEventArgs e)
+        {
         }
     }
 }

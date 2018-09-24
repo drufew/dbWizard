@@ -41,6 +41,8 @@
             this.tbUserGroups = new System.Windows.Forms.TabPage();
             this.dgv_SecurityGroups = new System.Windows.Forms.DataGridView();
             this.gb_UserData = new System.Windows.Forms.GroupBox();
+            this.cmb_SecurityGroups = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.pb_Offline = new System.Windows.Forms.PictureBox();
             this.pb_Online = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -50,9 +52,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtCountry = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtDOB = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtSurname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -66,8 +66,8 @@
             this.addNewUserToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.securityGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cmb_SecurityGroups = new System.Windows.Forms.ComboBox();
+            this.dtBirthDate = new System.Windows.Forms.DateTimePicker();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.tbUserList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Users)).BeginInit();
             this.tbUsers.SuspendLayout();
@@ -204,6 +204,7 @@
             // gb_UserData
             // 
             this.gb_UserData.BackColor = System.Drawing.Color.Transparent;
+            this.gb_UserData.Controls.Add(this.dtBirthDate);
             this.gb_UserData.Controls.Add(this.cmb_SecurityGroups);
             this.gb_UserData.Controls.Add(this.label8);
             this.gb_UserData.Controls.Add(this.pb_Offline);
@@ -217,7 +218,6 @@
             this.gb_UserData.Controls.Add(this.label4);
             this.gb_UserData.Controls.Add(this.txtEmail);
             this.gb_UserData.Controls.Add(this.label3);
-            this.gb_UserData.Controls.Add(this.txtDOB);
             this.gb_UserData.Controls.Add(this.label2);
             this.gb_UserData.Controls.Add(this.txtSurname);
             this.gb_UserData.Controls.Add(this.label1);
@@ -230,6 +230,24 @@
             this.gb_UserData.TabStop = false;
             this.gb_UserData.Text = "Information";
             this.gb_UserData.Enter += new System.EventHandler(this.gb_UserData_Enter);
+            // 
+            // cmb_SecurityGroups
+            // 
+            this.cmb_SecurityGroups.FormattingEnabled = true;
+            this.cmb_SecurityGroups.Location = new System.Drawing.Point(11, 287);
+            this.cmb_SecurityGroups.Name = "cmb_SecurityGroups";
+            this.cmb_SecurityGroups.Size = new System.Drawing.Size(232, 21);
+            this.cmb_SecurityGroups.TabIndex = 19;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(11, 270);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(77, 13);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Security Group";
             // 
             // pb_Offline
             // 
@@ -313,6 +331,8 @@
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(232, 20);
             this.txtCountry.TabIndex = 9;
+            this.txtCountry.TextChanged += new System.EventHandler(this.txtCountry_TextChanged);
+            this.txtCountry.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCountry_KeyDown);
             // 
             // label4
             // 
@@ -324,13 +344,6 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Email address";
             // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(11, 209);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(232, 20);
-            this.txtEmail.TabIndex = 7;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -341,14 +354,6 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Date of Birth";
             this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // txtDOB
-            // 
-            this.txtDOB.Location = new System.Drawing.Point(11, 170);
-            this.txtDOB.Name = "txtDOB";
-            this.txtDOB.Size = new System.Drawing.Size(232, 20);
-            this.txtDOB.TabIndex = 5;
-            this.txtDOB.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label2
             // 
@@ -366,6 +371,7 @@
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(232, 20);
             this.txtSurname.TabIndex = 3;
+            this.txtSurname.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSurname_KeyDown);
             // 
             // label1
             // 
@@ -383,6 +389,7 @@
             this.txtForename.Name = "txtForename";
             this.txtForename.Size = new System.Drawing.Size(232, 20);
             this.txtForename.TabIndex = 1;
+            this.txtForename.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtForename_KeyDown);
             // 
             // lbl_Fullname
             // 
@@ -471,23 +478,19 @@
             this.securityGroupToolStripMenuItem.Text = "Security Group";
             this.securityGroupToolStripMenuItem.Click += new System.EventHandler(this.securityGroupToolStripMenuItem_Click);
             // 
-            // label8
+            // dtBirthDate
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(11, 270);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(77, 13);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "Security Group";
+            this.dtBirthDate.Location = new System.Drawing.Point(11, 170);
+            this.dtBirthDate.Name = "dtBirthDate";
+            this.dtBirthDate.Size = new System.Drawing.Size(232, 20);
+            this.dtBirthDate.TabIndex = 1;
             // 
-            // cmb_SecurityGroups
+            // txtEmail
             // 
-            this.cmb_SecurityGroups.FormattingEnabled = true;
-            this.cmb_SecurityGroups.Location = new System.Drawing.Point(11, 287);
-            this.cmb_SecurityGroups.Name = "cmb_SecurityGroups";
-            this.cmb_SecurityGroups.Size = new System.Drawing.Size(232, 21);
-            this.cmb_SecurityGroups.TabIndex = 19;
+            this.txtEmail.Location = new System.Drawing.Point(11, 209);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(232, 20);
+            this.txtEmail.TabIndex = 7;
             // 
             // Users
             // 
@@ -530,14 +533,12 @@
         private System.Windows.Forms.GroupBox gb_UserData;
         private System.Windows.Forms.DataGridView dgv_Users;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtDOB;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtSurname;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtForename;
         private System.Windows.Forms.Label lbl_Fullname;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtCountry;
         private MaterialSkin.Controls.MaterialRaisedButton btn_SaveChanges;
@@ -558,5 +559,7 @@
         private System.Windows.Forms.DataGridView dgv_SecurityGroups;
         private System.Windows.Forms.ComboBox cmb_SecurityGroups;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DateTimePicker dtBirthDate;
+        private System.Windows.Forms.TextBox txtEmail;
     }
 }

@@ -219,5 +219,49 @@ namespace dbWizard
                 rtb_ChatHistory.Text += Environment.NewLine + returnValue.ToString();
             }
         }
+
+        private void txtSendMessage_KeyPress(object sender, KeyPressEventArgs e)
+        {
+         
+        }
+
+        private void txtSendMessage_KeyDown(object sender, KeyEventArgs e)
+        {
+            //if enter key is pressed
+            if(e.KeyValue==(char)Keys.Enter)
+            {
+                //checks to see if any message is actually present, if it is then sends
+                if (txtSendMessage.Text == "")
+                {
+                    txtSendMessage.Focus();
+                }
+                else
+                {
+                    //Sends message to chat history
+                    SqlConnection sqlConnection1 = new SqlConnection(connstr);
+                    SqlCommand cmd = new SqlCommand();
+
+                    cmd.CommandText = "USE [dbWizard] INSERT INTO dbMessageHistory (dbUserSentName,dbUserSentBy,dbUserReceived,dbMessageContent,dtDateSent) SELECT '" + currentUserName + "'," + userId + "," + targetUserId + ",'" + txtSendMessage.Text + "',GETDATE()";
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = sqlConnection1;
+
+                    sqlConnection1.Open();
+                    cmd.ExecuteScalar();
+                    sqlConnection1.Close();
+
+                    txtSendMessage.Clear();
+                    txtSendMessage.Focus();
+
+                }
+                txtSendMessage.Focus();
+            }
+        }
+
+        private void txtSendMessage_Click(object sender, EventArgs e)
+        {
+
+        }
     }
-}
+    }
+    
+

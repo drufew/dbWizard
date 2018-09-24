@@ -134,5 +134,18 @@ namespace dbWizard
             }
             cmb_SecurityGroups.BackColor = Color.LightGreen;
         }
+
+        private void txtUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == (char)Keys.Tab)
+            {
+                txtPassword.Focus();
+            }
+        }
+
+        private void txtPassword_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
