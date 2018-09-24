@@ -45,7 +45,7 @@ namespace dbWizard.SQL_Scripts
                     ) 
 
                     INSERT INTO [dbUserGroups] (dbGroupAlias,dbGroupRights,dtDateCreated)
-                    SELECT 'Admins','all',GETDATE();
+                    SELECT 'Admins','All',GETDATE();
 
                     INSERT INTO [dbUsers] (dbUsername,dbPassword,intSecurity,dtDateCreated,intActive)
                     SELECT 'Administrator','letmein',1,GETDATE(),0;

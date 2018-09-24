@@ -26,3 +26,5 @@ C:\Users\daniel.gillard\source\repos\Git\dbWizard\dbWizard\obj\Debug\dbWizard.ex
 C:\Users\daniel.gillard\source\repos\Git\dbWizard\dbWizard\obj\Debug\dbWizard.pdb
 C:\Users\daniel.gillard\source\repos\Git\dbWizard\dbWizard\obj\Debug\dbWizard.Users.resources
 C:\Users\daniel.gillard\source\repos\Git\dbWizard\dbWizard\obj\Debug\dbWizard.NewUser.resources
+C:\Users\daniel.gillard\source\repos\Git\dbWizard\dbWizard\obj\Debug\dbWizard.NewGroup.resources
+C:\Users\daniel.gillard\source\repos\Git\dbWizard\dbWizard\obj\Debug\dbWizard.WhosOnline.resources

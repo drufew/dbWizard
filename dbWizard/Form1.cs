@@ -29,6 +29,24 @@ namespace dbWizard
             InitializeComponent();
         }
 
+  
+
+        void Home_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //sets connection
+            SqlConnection sqlConnection1 = new SqlConnection(connstr);
+            SqlCommand cmd = new SqlCommand();
+
+            //logs user out if they click close form with the 'X'
+            cmd.CommandText = "USE [dbWizard] UPDATE dbUsers SET intActive=0 WHERE dbUserID=" + userId;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = sqlConnection1;
+
+            sqlConnection1.Open();
+            cmd.ExecuteScalar();
+            sqlConnection1.Close();
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             //creates dbWizard directory
@@ -114,14 +132,24 @@ namespace dbWizard
 
                     lbl_User.Text = "Logged in as: " + returnValue.ToString();
 
+                    //finds group
+                    cmd.CommandText = "USE [dbWizard] SELECT usrGrp.dbGroupRights FROM dbUsers usr INNER JOIN dbUserGroups usrGrp ON usr.intSecurity = usrGrp.dbGroupID WHERE dbUserID = " + userId;
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = sqlConnection1;
+
+                    sqlConnection1.Open();
+                    returnValue = cmd.ExecuteScalar();
+                    sqlConnection1.Close();
 
                     //alows admin to control security groups etc.
-                    if (returnValue.ToString() == "Administrator")
+                    if (returnValue.ToString() == "All")
                     {
                         settingsToolStripMenuItem.DropDownItems[3].Visible = true;
                     }
 
                 }
+
+                
             }          
 
             //hides toolbar from users if not logged in
@@ -134,6 +162,49 @@ namespace dbWizard
             {
                 viewsToolStripMenuItem.Visible = true;
                 GroupBoxTools.Visible = true;
+
+                //sets connection
+                SqlConnection sqlConnection1 = new SqlConnection(connstr);
+                SqlCommand cmd = new SqlCommand();
+                Object returnValue;
+
+                //Gets usergroup to set permissions
+                cmd.CommandText = "USE [dbWizard] SELECT grps.dbGroupRights FROM dbUsers usrs INNER JOIN dbUserGroups grps ON usrs.intSecurity=grps.dbGroupID WHERE usrs.dbUserID= " + userId;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = sqlConnection1;
+
+                sqlConnection1.Open();
+                returnValue = cmd.ExecuteScalar();
+                sqlConnection1.Close();
+
+                //sets up module permissions; only admin have access to everything including query editor
+                if (returnValue.ToString() == "Read")
+                {
+                    btn_BulkUpdate.Enabled = false;
+                    btn_DeleteData.Enabled = false;
+                    btn_Fullrestore.Enabled = false;
+                    btn_Import.Enabled = false;
+                    btn_PartialRestore.Enabled = false;
+                    btn_QueryEditor.Enabled = false;
+                }
+                else if (returnValue.ToString() == "Write")
+                {
+                    btn_QueryEditor.Enabled = false;
+                }
+                else if (returnValue.ToString() == "None")
+                {
+                    btn_Backup.Enabled = false;
+                    btn_BulkUpdate.Enabled = false;
+                    btn_DeleteData.Enabled = false;
+                    btn_Export.Enabled = false;
+                    btn_Fullrestore.Enabled = false;
+                    btn_Import.Enabled = false;
+                    btn_OpenTable.Enabled = false;
+                    btn_OtherUsers.Enabled = false;
+                    btn_PartialRestore.Enabled = false;
+                    btn_QueryEditor.Enabled = false;
+                }
+
             }
 
 
@@ -190,6 +261,19 @@ namespace dbWizard
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //sets connection
+            SqlConnection sqlConnection1 = new SqlConnection(connstr);
+            SqlCommand cmd = new SqlCommand();
+
+            //logs user out if they click close form with the 'X'
+            cmd.CommandText = "USE [dbWizard] UPDATE dbUsers SET intActive=0 WHERE dbUserID=" + userId;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = sqlConnection1;
+
+            sqlConnection1.Open();
+            cmd.ExecuteScalar();
+            sqlConnection1.Close();
+
             //Closes application.
             this.Close();
         }
@@ -423,6 +507,14 @@ namespace dbWizard
             users.connstr = connstr;
             users.Show();
             
+        }
+
+        private void btn_OtherUsers_Click(object sender, EventArgs e)
+        {
+            WhosOnline online = new WhosOnline();
+            online.userId = userId;
+            online.connstr = connstr;
+            online.Show();
         }
     }
 }

@@ -66,6 +66,12 @@
     <Compile Include="LogIn.Designer.cs">
       <DependentUpon>LogIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGroup.Designer.cs">
+      <DependentUpon>NewGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,12 @@
     <Compile Include="Users.Designer.cs">
       <DependentUpon>Users.cs</DependentUpon>
     </Compile>
+    <Compile Include="WhosOnline.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WhosOnline.Designer.cs">
+      <DependentUpon>WhosOnline.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ConnectionDetails.resx">
       <DependentUpon>ConnectionDetails.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewGroup.resx">
+      <DependentUpon>NewGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewUser.resx">
       <DependentUpon>NewUser.cs</DependentUpon>
@@ -104,6 +119,9 @@
     </Compile>
     <EmbeddedResource Include="Users.resx">
       <DependentUpon>Users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WhosOnline.resx">
+      <DependentUpon>WhosOnline.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

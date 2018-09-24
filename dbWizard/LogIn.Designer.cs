@@ -130,6 +130,8 @@
             // 
             this.chkRemember.AutoSize = true;
             this.chkRemember.BackColor = System.Drawing.Color.Transparent;
+            this.chkRemember.Checked = true;
+            this.chkRemember.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkRemember.ForeColor = System.Drawing.Color.Black;
             this.chkRemember.Location = new System.Drawing.Point(12, 184);
             this.chkRemember.Name = "chkRemember";

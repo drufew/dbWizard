@@ -31,13 +31,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Users));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Users));
             this.tbUserList = new System.Windows.Forms.TabPage();
             this.dgv_Users = new System.Windows.Forms.DataGridView();
             this.tbUsers = new System.Windows.Forms.TabControl();
+            this.tbUserGroups = new System.Windows.Forms.TabPage();
+            this.dgv_SecurityGroups = new System.Windows.Forms.DataGridView();
             this.gb_UserData = new System.Windows.Forms.GroupBox();
             this.pb_Offline = new System.Windows.Forms.PictureBox();
             this.pb_Online = new System.Windows.Forms.PictureBox();
@@ -64,19 +66,19 @@
             this.addNewUserToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.securityGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbUserGroups = new System.Windows.Forms.TabPage();
-            this.dgv_SecurityGroups = new System.Windows.Forms.DataGridView();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cmb_SecurityGroups = new System.Windows.Forms.ComboBox();
             this.tbUserList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Users)).BeginInit();
             this.tbUsers.SuspendLayout();
+            this.tbUserGroups.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_SecurityGroups)).BeginInit();
             this.gb_UserData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Offline)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Online)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Saved)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.UsersMenuStrip.SuspendLayout();
-            this.tbUserGroups.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_SecurityGroups)).BeginInit();
             this.SuspendLayout();
             // 
             // tbUserList
@@ -144,10 +146,66 @@
             this.tbUsers.SelectedIndex = 0;
             this.tbUsers.Size = new System.Drawing.Size(662, 474);
             this.tbUsers.TabIndex = 0;
+            this.tbUsers.SelectedIndexChanged += new System.EventHandler(this.tbUsers_SelectedIndexChanged);
+            // 
+            // tbUserGroups
+            // 
+            this.tbUserGroups.Controls.Add(this.dgv_SecurityGroups);
+            this.tbUserGroups.Location = new System.Drawing.Point(4, 22);
+            this.tbUserGroups.Name = "tbUserGroups";
+            this.tbUserGroups.Padding = new System.Windows.Forms.Padding(3);
+            this.tbUserGroups.Size = new System.Drawing.Size(654, 448);
+            this.tbUserGroups.TabIndex = 1;
+            this.tbUserGroups.Text = "Security Groups";
+            this.tbUserGroups.UseVisualStyleBackColor = true;
+            // 
+            // dgv_SecurityGroups
+            // 
+            this.dgv_SecurityGroups.AllowUserToAddRows = false;
+            this.dgv_SecurityGroups.AllowUserToDeleteRows = false;
+            this.dgv_SecurityGroups.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgv_SecurityGroups.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_SecurityGroups.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgv_SecurityGroups.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightGreen;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_SecurityGroups.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_SecurityGroups.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightGreen;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_SecurityGroups.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dgv_SecurityGroups.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgv_SecurityGroups.Location = new System.Drawing.Point(6, 6);
+            this.dgv_SecurityGroups.Name = "dgv_SecurityGroups";
+            this.dgv_SecurityGroups.ReadOnly = true;
+            this.dgv_SecurityGroups.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightGreen;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_SecurityGroups.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgv_SecurityGroups.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_SecurityGroups.Size = new System.Drawing.Size(642, 436);
+            this.dgv_SecurityGroups.TabIndex = 1;
             // 
             // gb_UserData
             // 
             this.gb_UserData.BackColor = System.Drawing.Color.Transparent;
+            this.gb_UserData.Controls.Add(this.cmb_SecurityGroups);
+            this.gb_UserData.Controls.Add(this.label8);
             this.gb_UserData.Controls.Add(this.pb_Offline);
             this.gb_UserData.Controls.Add(this.pb_Online);
             this.gb_UserData.Controls.Add(this.label6);
@@ -208,7 +266,7 @@
             // pb_Saved
             // 
             this.pb_Saved.Image = ((System.Drawing.Image)(resources.GetObject("pb_Saved.Image")));
-            this.pb_Saved.Location = new System.Drawing.Point(119, 317);
+            this.pb_Saved.Location = new System.Drawing.Point(169, 326);
             this.pb_Saved.Name = "pb_Saved";
             this.pb_Saved.Size = new System.Drawing.Size(29, 31);
             this.pb_Saved.TabIndex = 14;
@@ -219,7 +277,7 @@
             // 
             this.lbl_Saved.AutoSize = true;
             this.lbl_Saved.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Saved.Location = new System.Drawing.Point(63, 301);
+            this.lbl_Saved.Location = new System.Drawing.Point(105, 310);
             this.lbl_Saved.Name = "lbl_Saved";
             this.lbl_Saved.Size = new System.Drawing.Size(135, 13);
             this.lbl_Saved.TabIndex = 13;
@@ -243,7 +301,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(14, 262);
+            this.label5.Location = new System.Drawing.Point(11, 231);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 13);
             this.label5.TabIndex = 10;
@@ -251,7 +309,7 @@
             // 
             // txtCountry
             // 
-            this.txtCountry.Location = new System.Drawing.Point(14, 278);
+            this.txtCountry.Location = new System.Drawing.Point(11, 247);
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(232, 20);
             this.txtCountry.TabIndex = 9;
@@ -260,7 +318,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(11, 215);
+            this.label4.Location = new System.Drawing.Point(11, 193);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 13);
             this.label4.TabIndex = 8;
@@ -268,7 +326,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(14, 231);
+            this.txtEmail.Location = new System.Drawing.Point(11, 209);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(232, 20);
             this.txtEmail.TabIndex = 7;
@@ -277,7 +335,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(11, 169);
+            this.label3.Location = new System.Drawing.Point(11, 154);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 6;
@@ -286,7 +344,7 @@
             // 
             // txtDOB
             // 
-            this.txtDOB.Location = new System.Drawing.Point(11, 185);
+            this.txtDOB.Location = new System.Drawing.Point(11, 170);
             this.txtDOB.Name = "txtDOB";
             this.txtDOB.Size = new System.Drawing.Size(232, 20);
             this.txtDOB.TabIndex = 5;
@@ -296,7 +354,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(11, 122);
+            this.label2.Location = new System.Drawing.Point(11, 115);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 4;
@@ -304,7 +362,7 @@
             // 
             // txtSurname
             // 
-            this.txtSurname.Location = new System.Drawing.Point(11, 138);
+            this.txtSurname.Location = new System.Drawing.Point(11, 131);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(232, 20);
             this.txtSurname.TabIndex = 3;
@@ -353,9 +411,9 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(60, 14);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(132, 13);
+            this.label7.Size = new System.Drawing.Size(129, 13);
             this.label7.TabIndex = 1;
-            this.label7.Text = "Options for selected users:";
+            this.label7.Text = "Options for selected rows:";
             // 
             // cmb_UserOptions
             // 
@@ -413,58 +471,23 @@
             this.securityGroupToolStripMenuItem.Text = "Security Group";
             this.securityGroupToolStripMenuItem.Click += new System.EventHandler(this.securityGroupToolStripMenuItem_Click);
             // 
-            // tbUserGroups
+            // label8
             // 
-            this.tbUserGroups.Controls.Add(this.dgv_SecurityGroups);
-            this.tbUserGroups.Location = new System.Drawing.Point(4, 22);
-            this.tbUserGroups.Name = "tbUserGroups";
-            this.tbUserGroups.Padding = new System.Windows.Forms.Padding(3);
-            this.tbUserGroups.Size = new System.Drawing.Size(654, 448);
-            this.tbUserGroups.TabIndex = 1;
-            this.tbUserGroups.Text = "Security Groups";
-            this.tbUserGroups.UseVisualStyleBackColor = true;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(11, 270);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(77, 13);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Security Group";
             // 
-            // dgv_SecurityGroups
+            // cmb_SecurityGroups
             // 
-            this.dgv_SecurityGroups.AllowUserToAddRows = false;
-            this.dgv_SecurityGroups.AllowUserToDeleteRows = false;
-            this.dgv_SecurityGroups.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgv_SecurityGroups.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgv_SecurityGroups.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgv_SecurityGroups.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightGreen;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_SecurityGroups.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgv_SecurityGroups.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightGreen;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_SecurityGroups.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgv_SecurityGroups.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgv_SecurityGroups.Location = new System.Drawing.Point(6, 6);
-            this.dgv_SecurityGroups.Name = "dgv_SecurityGroups";
-            this.dgv_SecurityGroups.ReadOnly = true;
-            this.dgv_SecurityGroups.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightGreen;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_SecurityGroups.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgv_SecurityGroups.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_SecurityGroups.Size = new System.Drawing.Size(642, 436);
-            this.dgv_SecurityGroups.TabIndex = 1;
+            this.cmb_SecurityGroups.FormattingEnabled = true;
+            this.cmb_SecurityGroups.Location = new System.Drawing.Point(11, 287);
+            this.cmb_SecurityGroups.Name = "cmb_SecurityGroups";
+            this.cmb_SecurityGroups.Size = new System.Drawing.Size(232, 21);
+            this.cmb_SecurityGroups.TabIndex = 19;
             // 
             // Users
             // 
@@ -484,6 +507,8 @@
             this.tbUserList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Users)).EndInit();
             this.tbUsers.ResumeLayout(false);
+            this.tbUserGroups.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_SecurityGroups)).EndInit();
             this.gb_UserData.ResumeLayout(false);
             this.gb_UserData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Offline)).EndInit();
@@ -493,8 +518,6 @@
             this.groupBox1.PerformLayout();
             this.UsersMenuStrip.ResumeLayout(false);
             this.UsersMenuStrip.PerformLayout();
-            this.tbUserGroups.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_SecurityGroups)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -533,5 +556,7 @@
         private System.Windows.Forms.ToolStripMenuItem securityGroupToolStripMenuItem;
         private System.Windows.Forms.TabPage tbUserGroups;
         private System.Windows.Forms.DataGridView dgv_SecurityGroups;
+        private System.Windows.Forms.ComboBox cmb_SecurityGroups;
+        private System.Windows.Forms.Label label8;
     }
 }
